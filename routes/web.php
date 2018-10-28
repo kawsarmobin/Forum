@@ -21,7 +21,7 @@ Route::get('/discuss', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/forum', 'ForumsController@index')->name('forum');
 
 Route::get('{provider}/auth', 'SocialsController@auth')->name('social.auth');
 
@@ -29,4 +29,8 @@ Route::get('/{provider}/redirect', 'SocialsController@auth_callback')->name('soc
 
 Route::group(['prefix' => 'auth'], function() {
     Route::resource('channels', 'ChannelsController');
+
+    Route::get('discussions/create', 'DiscussionsController@create')->name('discussions.create');
+    Route::post('discussions/store', 'DiscussionsController@store')->name('discussions.store');
+    Route::get('discussion/{slug}', 'DiscussionsController@show')->name('discussion');
 });

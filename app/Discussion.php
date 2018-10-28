@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Discussion extends Model
 {
     protected $fillable = [
-        'user_id', 'channel_id', 'title', 'content',
+        'user_id', 'channel_id', 'title', 'content', 'slug',
     ];
 
     public function channel()
