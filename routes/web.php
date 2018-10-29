@@ -33,4 +33,5 @@ Route::group(['prefix' => 'auth'], function() {
     Route::get('discussions/create', 'DiscussionsController@create')->name('discussions.create');
     Route::post('discussions/store', 'DiscussionsController@store')->name('discussions.store');
     Route::get('discussion/{slug}', 'DiscussionsController@show')->name('discussion');
+    Route::post('discussion/reply/{id}', 'DiscussionsController@reply')->name('discussion.reply');
 });
