@@ -5,6 +5,13 @@
         <div class="card-header">
             <img src="{{ $discussion->user->avatar }}" alt="" width="30px" height="30px" style="border-radius: 50px">
             &nbsp; <span>{{ $discussion->user->name  }}, <code>{{ $discussion->created_at->diffForHumans() }}</code></span>
+
+            @if ($discussion->is_being_watched_by_auth_user())
+                <a href="{{ route('discussion.unwatch', $discussion->id) }}" class="btn btn-sm btn-outline-dark float-right">Unwatch</a>
+            @else
+                <a href="{{ route('discussion.watch', $discussion->id) }}" class="btn btn-sm btn-outline-dark float-right">Watch</a>
+            @endif
+
         </div>
 
         <div class="card-body">

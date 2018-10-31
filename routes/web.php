@@ -40,4 +40,7 @@ Route::group(['prefix' => 'auth'], function() {
 
     Route::get('reply/like/{id}', 'RepliesController@like')->name('reply.like');
     Route::get('reply/unlike/{id}', 'RepliesController@unlike')->name('reply.unlike');
+
+    Route::get('discussion/watch/{id}', 'WathersController@watch')->name('discussion.watch');
+    Route::get('discussion/unwatch/{id}', 'WathersController@unwatch')->name('discussion.unwatch');
 });
