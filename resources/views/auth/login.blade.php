@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">{{ __('Login') }}</div>
+        <div class="card-header">
+            <div class="text-center">
+                <h4 style="color: #00b22d">{{ __('Login To Forum') }}</h4>
+            </div>
+        </div>
 
         <div class="card-body">
             <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
@@ -60,6 +64,11 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="card-footer">
+            <div class="text-center">
+                <span style="color: #A9A9A9">Not a member yet?</span><a href="{{ route('register') }}" style="color: #32CD32"> Join now</a>
+            </div>
         </div>
     </div>
 @endsection

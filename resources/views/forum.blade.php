@@ -24,9 +24,10 @@
                 </div>
 
                 <div class="card-footer">
-                    <p>
+                    <span>
                         {{ $discussion->replies->count() }} Replies
-                    </p>
+                    </span>
+                    <a class="btn btn-sm btn-outline-success float-right" href="{{ route('channel', $discussion->channel->slug) }}">{{ $discussion->channel->title }}</a>
                 </div>
             </div> <br>
         @endforeach
