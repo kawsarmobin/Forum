@@ -83,6 +83,18 @@
                     <br> <br>
 
                     <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="{{ route('forum') }}" style="text-decoration: none;">Home</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="card">
                         <div class="card-header text-center">
                             Channels
                         </div>
@@ -90,7 +102,9 @@
                             <ul class="list-group">
                                 @if ($channels)
                                     @foreach ($channels as $channel)
-                                        <li class="list-group-item">{{ $channel->title }}</li>
+                                        <li class="list-group-item">
+                                            <a href="{{ route('channel', $channel->slug) }}" style="text-decoration: none;">{{ $channel->title }}</a>
+                                        </li>
                                     @endforeach
                                 @endif
                             </ul>

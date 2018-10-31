@@ -29,6 +29,8 @@ Route::get('/{provider}/redirect', 'SocialsController@auth_callback')->name('soc
 
 Route::get('discussion/{slug}', 'DiscussionsController@show')->name('discussion');
 
+Route::get('channel/{slug}', 'ForumsController@channel')->name('channel');
+
 Route::group(['prefix' => 'auth'], function() {
     Route::resource('channels', 'ChannelsController');
 

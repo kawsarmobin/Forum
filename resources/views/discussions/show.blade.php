@@ -46,9 +46,9 @@
 
             <div class="card-footer">
                 @if ($reply->is_liked_by_auth_user())
-                  <a href="{{ route('reply.unlike', $reply->id) }}" class="btn btn-sm btn-danger">Unlike <span class="badge">{{ $reply->likes->count() }}</span></a>
+                    <a href="{{ route('reply.unlike', $reply->id) }}" class="btn btn-sm btn-danger">Unlike <span class="badge">{{ $reply->likes->count() }}</span></a>
                 @else
-                  <a href="{{ route('reply.like', $reply->id) }}" class="btn btn-sm btn-success">Like <span class="badge">{{ $reply->likes->count() }}</span></a>
+                    <a href="{{ route('reply.like', $reply->id) }}" class="btn btn-sm btn-success">Like <span class="badge">{{ $reply->likes->count() }}</span></a>
                 @endif
             </div>
         </div> <br>
@@ -56,22 +56,28 @@
 
 
     <div class="card">
-      <div class="card-body">
-        <form action="{{ route('discussion.reply', $discussion->id) }}" method="post">
-          @csrf
+        <div class="card-body">
+            @if (Auth::check())
+                <form action="{{ route('discussion.reply', $discussion->id) }}" method="post">
+                    @csrf
 
-          <div class="form-group">
-            <label for="" class="form-label">
-              <h5>Leave a reply...</h5>
-            </label>
-            <textarea class="form-control" name="reply" rows="8" cols="80">{{ $discussion->reply }}</textarea>
-          </div>
-          <div class="form-group" style="padding-left: 300px">
-            <button type="submit" class="btn btn-sm btn-primary">Leave a reply</button>
-          </div>
-        </form>
-      </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">
+                            <h5>Leave a reply...</h5>
+                        </label>
+                        <textarea class="form-control" name="reply" rows="8" cols="80">{{ $discussion->reply }}</textarea>
+                    </div>
+                    <div class="form-group" style="padding-left: 300px">
+                        <button type="submit" class="btn btn-sm btn-primary">Leave a reply</button>
+                    </div>
+                </form>
+            @else
+                <div class="text-center">
+                    <h2>Sign in to leave a reply</h2>
+                </div>
+            @endif
+        </div>
     </div>
-
+    <br>
 
 @endsection
