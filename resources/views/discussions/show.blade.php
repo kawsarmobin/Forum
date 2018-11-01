@@ -60,7 +60,9 @@
                 <img src="{{ $reply->user->avatar }}" alt="" width="30px" height="30px" style="border-radius: 50px">
                 &nbsp; <span>{{ $reply->user->name  }} <b>({{ $reply->user->points }})</b> - <code>{{ $reply->created_at->diffForHumans() }}</code></span>
                 @if (!$best_answer)
-                    <span class="btn btn-sm btn-outline-primary float-right"><a href="{!! route('discussion.best.answer', $reply->id) !!}" style="text-decoration: none; ">Mark as best answer</a></span>
+                    @if (Auth::id() == $discussion->user->id)
+                        <span class="btn btn-sm btn-outline-primary float-right"><a href="{!! route('discussion.best.answer', $reply->id) !!}" style="text-decoration: none; ">Mark as best answer</a></span>
+                    @endif
                 @endif
             </div>
 
