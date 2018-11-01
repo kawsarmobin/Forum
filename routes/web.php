@@ -45,4 +45,7 @@ Route::group(['prefix' => 'auth'], function() {
     Route::get('discussion/unwatch/{id}', 'WathersController@unwatch')->name('discussion.unwatch');
 
     Route::get('discussion/best/reply/{id}', 'RepliesController@best_answer')->name('discussion.best.answer');
+
+    Route::get('discussion/edit/{slug}', 'DiscussionsController@edit')->name('discussions.edit');
+    Route::post('discussion/update/{id}', 'DiscussionsController@update')->name('discussions.update');
 });

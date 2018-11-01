@@ -14,6 +14,12 @@
 
             <span class="float-right">  &nbsp;  </span>
 
+            @if (Auth::id() == $discussion->user->id)
+                <a href="{{ route('discussions.edit', $discussion->slug) }}" class="btn btn-sm btn-outline-success float-right">Edit</a>
+            @endif
+
+            <span class="float-right">  &nbsp;  </span>
+
             @if ($discussion->is_being_watched_by_auth_user())
                 <a href="{{ route('discussion.unwatch', $discussion->id) }}" class="btn btn-sm btn-outline-dark float-right">Unwatch</a>
             @else
