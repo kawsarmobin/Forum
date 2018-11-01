@@ -26,6 +26,23 @@
                 {{ $discussion->content, 200 }}
             </p>
 
+            <hr>
+
+            @if ($best_answer)
+                <div class="text-center" style="padding: 20px">
+                    <h3 style="color: red">Best Answer</h3>
+                    <div class="card text-white bg-danger ">
+                        <div class="card-header">
+                            <img src="{{ $best_answer->user->avatar }}" alt="" width="30px" height="30px" style="border-radius: 50px">
+                            &nbsp; <span>{{ $best_answer->user->name  }}</span>
+                        </div>
+                        <div class="card-body">
+                            {{ $best_answer->content }}
+                        </div>
+                    </div>
+                </div>
+            @endif
+
         </div>
 
         <div class="card-footer">
@@ -42,6 +59,9 @@
             <div class="card-header">
                 <img src="{{ $reply->user->avatar }}" alt="" width="30px" height="30px" style="border-radius: 50px">
                 &nbsp; <span>{{ $reply->user->name  }}, <code>{{ $reply->created_at->diffForHumans() }}</code></span>
+                @if (!$best_answer)
+                    <span class="btn btn-sm btn-outline-primary float-right"><a href="{!! route('discussion.best.answer', $reply->id) !!}" style="text-decoration: none; ">Mark as best answer</a></span>
+                @endif
             </div>
 
             <div class="card-body">

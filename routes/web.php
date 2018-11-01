@@ -43,4 +43,6 @@ Route::group(['prefix' => 'auth'], function() {
 
     Route::get('discussion/watch/{id}', 'WathersController@watch')->name('discussion.watch');
     Route::get('discussion/unwatch/{id}', 'WathersController@unwatch')->name('discussion.unwatch');
+
+    Route::get('discussion/best/reply/{id}', 'RepliesController@best_answer')->name('discussion.best.answer');
 });
