@@ -9,6 +9,14 @@
                     <img src="{{ $discussion->user->avatar }}" alt="" width="30px" height="30px" style="border-radius: 50px">
                      &nbsp; <span>{{ $discussion->user->name  }}, <code>{{ $discussion->created_at->diffForHumans() }}</code></span>
                      <a class="btn btn-sm btn-outline-dark float-right" href="{{ route('discussion', $discussion->slug) }}">View</a>
+
+                     <span class="float-right">  &nbsp;  </span>
+
+                     @if ($discussion->hasBestAnswer())
+                         <span class="btn btn-sm btn-outline-info float-right">Close</span>
+                     @else
+                         <span class="btn btn-sm btn-outline-danger float-right">Open</span>
+                     @endif
                 </div>
 
                 <div class="card-body">
