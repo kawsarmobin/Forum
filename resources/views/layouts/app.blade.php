@@ -12,6 +12,16 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        @if (Session::has('success'))
+            toastr.success('{{ Session::get('success') }}')
+        @endif
+
+        @if (Session::has('info'))
+            toastr.info("{{ Session::get('info') }}")
+        @endif
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -19,6 +29,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -72,6 +83,21 @@
         </nav>
 
         <br>
+
+        {{-- Errors notifications --}}
+        <div class="container">
+            @if ($errors->count() > 0)
+                <ul class="list-group-item">
+                    @foreach ($errors->all() as $error)
+                        <li class="list-group-item text-danger text-center">
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+                <br>
+            @endif
+        </div>
+        {{-- End errors notifications --}}
 
         <div class="container">
             <div class="row">
