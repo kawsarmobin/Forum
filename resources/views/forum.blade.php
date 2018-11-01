@@ -13,7 +13,7 @@
                      <span class="float-right">  &nbsp;  </span>
 
                      @if ($discussion->hasBestAnswer())
-                         <span class="btn btn-sm btn-outline-success float-right">Close</span>
+                         <span class="btn btn-sm btn-outline-info float-right">Close</span>
                      @else
                          <span class="btn btn-sm btn-outline-danger float-right">Open</span>
                      @endif
