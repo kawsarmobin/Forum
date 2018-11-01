@@ -15,7 +15,9 @@
             <span class="float-right">  &nbsp;  </span>
 
             @if (Auth::id() == $discussion->user->id)
-                <a href="{{ route('discussions.edit', $discussion->slug) }}" class="btn btn-sm btn-outline-success float-right">Edit</a>
+                @if (!$discussion->hasBestAnswer())
+                    <a href="{{ route('discussions.edit', $discussion->slug) }}" class="btn btn-sm btn-outline-success float-right">Edit</a>
+                @endif
             @endif
 
             <span class="float-right">  &nbsp;  </span>
@@ -73,11 +75,21 @@
             <div class="card-header">
                 <img src="{{ $reply->user->avatar }}" alt="" width="30px" height="30px" style="border-radius: 50px">
                 &nbsp; <span>{{ $reply->user->name  }} <b>({{ $reply->user->points }})</b> - <code>{{ $reply->created_at->diffForHumans() }}</code></span>
+
                 @if (!$best_answer)
                     @if (Auth::id() == $discussion->user->id)
-                        <span class="btn btn-sm btn-outline-primary float-right"><a href="{!! route('discussion.best.answer', $reply->id) !!}" style="text-decoration: none; ">Mark as best answer</a></span>
+                        <span class="btn btn-sm btn-outline-primary float-right"><a href="{!! route('discussion.best.answer', $reply->id) !!}" style="text-decoration: none;">Mark as best answer</a></span>
                     @endif
                 @endif
+
+                <span class="float-right">  &nbsp;  </span>
+
+                @if (Auth::id() == $reply->user->id)
+                    @if (!$reply->best_answer)
+                        <span class="btn btn-sm btn-secondary float-right"><a href="{!! route('reply.edit', $reply->id) !!}" style="text-decoration: none; color: white">Edit</a></span>
+                    @endif
+                @endif
+
             </div>
 
             <div class="card-body">

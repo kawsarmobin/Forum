@@ -48,4 +48,7 @@ Route::group(['prefix' => 'auth'], function() {
 
     Route::get('discussion/edit/{slug}', 'DiscussionsController@edit')->name('discussions.edit');
     Route::post('discussion/update/{id}', 'DiscussionsController@update')->name('discussions.update');
+
+    Route::get('reply/edit/{id}', 'RepliesController@edit')->name('reply.edit');
+    Route::post('reply/update/{id}', 'RepliesController@update')->name('reply.update');
 });
