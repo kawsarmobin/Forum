@@ -40,6 +40,9 @@ class RepliesController extends Controller
 
         $reply->best_answer = 1;
 
+        $reply->user->points += 100;
+        $reply->user->save();
+
         if ($reply->save()) {
             Session::flash('success', 'Reply has been marked as the best answer.');
         }
