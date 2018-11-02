@@ -45,15 +45,15 @@
             <hr>
 
             @if ($best_answer)
-                <div class="text-center" style="padding: 20px">
-                    <h3 style="color: red">Best Answer</h3>
+                <div style="padding: 20px">
+                    <h3 class="text-center" style="color: red">Best Answer</h3>
                     <div class="card text-white bg-danger ">
-                        <div class="card-header">
+                        <div class="card-header text-center">
                             <img src="{{ $best_answer->user->avatar }}" alt="" width="30px" height="30px" style="border-radius: 50px">
                             &nbsp; <span>{{ $best_answer->user->name  }}</span> <abbr>({{ $best_answer->user->points }})</abbr>
                         </div>
-                        <div class="card-body">
-                            {{ $best_answer->content }}
+                        <div class="card-body text-justify">
+                            {!! Markdown::convertToHtml($best_answer->content) !!}
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
             <div class="card-body">
 
                 <p class="text-center">
-                    {{ $reply->content, 200 }}
+                    {!! Markdown::convertToHtml($reply->content) !!}
                 </p>
 
             </div>

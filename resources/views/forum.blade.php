@@ -26,7 +26,7 @@
                     </h4>
 
                     <p class="text-center">
-                        {{ str_limit($discussion->content, 200) }}
+                        {!! Markdown::convertToHtml(str_limit($discussion->content, 200)) !!}
                     </p>
 
                 </div>
