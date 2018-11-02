@@ -31,7 +31,7 @@ Route::get('discussion/{slug}', 'DiscussionsController@show')->name('discussion'
 
 Route::get('channel/{slug}', 'ForumsController@channel')->name('channel');
 
-Route::group(['prefix' => 'auth'], function() {
+Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'admin']], function() {
     Route::resource('channels', 'ChannelsController');
 
     Route::get('discussions/create', 'DiscussionsController@create')->name('discussions.create');

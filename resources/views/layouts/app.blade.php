@@ -123,6 +123,14 @@
                                 <li class="list-group-item">
                                     <a href="{{ url('/forum?filter=unsolved') }}" style="text-decoration: none;">Unanswered discussions</a>
                                 </li>
+                                <hr>
+                                @if (Auth::check())
+                                    @if (Auth::user()->admin)
+                                        <li class="list-group-item">
+                                            <a href="{{ route('channels.index') }}" style="text-decoration: none;">All channels</a>
+                                        </li>
+                                    @endif
+                                @endif
                             </ul>
                         </div>
                     </div>
