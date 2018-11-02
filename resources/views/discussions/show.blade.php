@@ -39,7 +39,7 @@
             <hr>
 
             <p class="text-center">
-                {{ $discussion->content, 200 }}
+                {!! Markdown::convertToHtml($discussion->content) !!}
             </p>
 
             <hr>
